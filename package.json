@@ -1,0 +1,22 @@
+{
+  "name": "youtube-downloader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabeeCoding/youtube-downloader.git"
+  },
+  "author": "gabe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GabeeCoding/youtube-downloader/issues"
+  },
+  "homepage": "https://github.com/GabeeCoding/youtube-downloader#readme",
+  "dependencies": {
+    "ytdl-core": "^4.11.0"
+  }
+}
