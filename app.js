@@ -75,11 +75,6 @@ app.get("/getUrl", async (req, resp) => {
 		fs.rmSync(videoPath);
 		resp.send(JSON.stringify({url: `/temp/${fileName}.mp3`, title: title}))
 	}
-
-	/*
-	readable.pipe(fs.createWriteStream("./storage/temp/" + fileName))
-	resp.send(JSON.stringify({url: `/temp/${fileName}`}))
-	*/
 })
 
 //clear temp storage
