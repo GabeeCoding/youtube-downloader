@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+	font-family: "Montserrat", monospace;
+	font-weight: 600;
+}
+
+input {
+	width: 50%;
+}
+
+.buttons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
