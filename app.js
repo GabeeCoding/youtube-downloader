@@ -66,6 +66,14 @@ app.get("/getUrl", async (req, resp) => {
     */
 })
 
+//clear temp storage
+fs.readdirSync("./storage/temp", {withFileTypes: true})
+.forEach((ent) => {
+    let n = ent.name
+    console.log(`Removing ${n.split(".")[1]} file`)
+    fs.rm(`./storage/temp/${ent.name}`, () => {});
+})
+
 app.use(express.static("./storage"));
 
 const port = process.env.PORT || 3000
