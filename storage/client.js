@@ -15,6 +15,7 @@ function download(format){
     if(url === ""){
         //blank url
         setStatus("URL is blank")
+        return
     }
     //lets just say otherwise we can send it through
     console.log(window.location);
