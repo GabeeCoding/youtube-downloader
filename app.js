@@ -23,12 +23,14 @@ function AreHeadersValid(headers){
 	return valid
 }
 
-function getVideoTitle(videoUrl){
-	return new Promise ((resolve, reject) => {
-	   ytdl.getBasicInfo (videoUrl, (err, info) => {
-			resolve (info.title)
-	   })
-	})
+function getStream(url, options){
+	let stream
+	try {
+		stream = ytdl(url, options)
+	} catch(err) {
+		console.log("Failed to download video: ")
+		console.log(err)
+	}
 }
 
 app.get("/getUrl", async (req, resp) => {
@@ -49,7 +51,12 @@ app.get("/getUrl", async (req, resp) => {
 
 	if(format === "mp4"){
 		//just download it nothing special
-		let stream = ytdl(url, {filter: "video"})
+		let stream = getStream(url, {filter: "video"});
+		if(stream === undefined){
+			//stream failed
+			resp.status(500).send(JSON.stringify({message: "Failed to download video"}));
+			return
+		}
 		stream.pipe(fs.createWriteStream(`./storage/temp/${fileName}.mp4`));
 		await new Promise((resolve, reject) => {
 			stream.on('finish', resolve);
@@ -62,8 +69,13 @@ app.get("/getUrl", async (req, resp) => {
 		//OUR CODE
 		let videoPath = `./storage/temp/${fileName}.mp4`
 		let audioPath = `./storage/temp/${fileName}.mp3`
-		let stream = ytdl(url, {quality: 'highestaudio'})
-		.pipe(fs.createWriteStream(videoPath));
+		let stream = getStream(url, {quality: 'highestaudio'});
+		if(stream === undefined){
+			//stream failed
+			resp.status(500).send(JSON.stringify({message: "Failed to download video"}));
+			return
+		}
+		stream.pipe(fs.createWriteStream(videoPath));
 		//wait for the file to finish downloading
 		await new Promise((resolve, reject) => {
 			stream.on('finish', resolve);
