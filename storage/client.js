@@ -29,6 +29,11 @@ function download(format){
     resp.then((r) => {
         //got the response
         r.json().then(body=>{
+            if(r.status !== 200){
+                setStatus(body.message || "Failed to get video")
+                return
+            }    
+            //get the body
             let pom = document.createElement('a');
             pom.setAttribute('href', body.url);
             pom.setAttribute('download', body.title);
