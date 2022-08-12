@@ -4,6 +4,7 @@ let setStatus = (txt) => {
 }
 setStatus("Click the buttons to download video/audio from url")
 let URLBox = document.getElementById("urlbox")
+let downloadbox = document.getElementById("link")
 
 function download(format){
     //send a request to the server
@@ -26,6 +27,11 @@ function download(format){
     });
     resp.then((r) => {
         //got the response
-        r.json().then(body=>console.log(body))
+        r.json().then(body=>{
+            let pom = document.createElement('a');
+            pom.setAttribute('href', body.url);
+            pom.setAttribute('download', body.title);
+            pom.click();
+        })
     })
 }
