@@ -41,10 +41,3 @@ function download(format){
         })
     })
 }
-
-let c = 0
-
-function robux(){
-    c += 1;
-    document.getElementById("counter").innerHTML = "Robux: " + c
-}
