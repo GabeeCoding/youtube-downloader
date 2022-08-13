@@ -31,6 +31,7 @@ function getStream(url, options){
 		console.log("Failed to download video: ")
 		console.log(err)
 	}
+	return stream
 }
 
 app.get("/getUrl", async (req, resp) => {
@@ -42,11 +43,6 @@ app.get("/getUrl", async (req, resp) => {
 		return
 	}
 	let title = (await ytdl.getInfo(url)).videoDetails.title
-	//before we download it
-	//validate the url lazily
-	///How?
-	//The URL needs to start with https://
-	
 	let fileName = randomUUID()
 
 	if(format === "mp4"){
