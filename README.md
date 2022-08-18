@@ -5,6 +5,8 @@
 
 Hello! I made this youtube downloader in 2 days. It can download mp3 and mp4 files.
 
+The backend uses express as a server and the frontend is made with HTML.
+
 ## Start-up guide
 
 Install dependencies
