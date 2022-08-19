@@ -86,7 +86,7 @@ app.get("/getUrl", async (req, resp) => {
 })
 
 //clear temp storage
-fs.readdirSync("./storage/temp", {withFileTypes: true})
+fs.readdirSync(__dirname + "/storage/temp", {withFileTypes: true})
 .forEach((ent) => {
 	let n = ent.name
 	console.log(`Removing ${n.split(".")[1]} file`)
