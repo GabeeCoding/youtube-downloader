@@ -89,6 +89,9 @@ app.get("/getUrl", async (req, resp) => {
 fs.readdirSync(__dirname + "/storage/temp", {withFileTypes: true})
 .forEach((ent) => {
 	let n = ent.name
+	if(n === "text.txt"){
+		return
+	}
 	console.log(`Removing ${n.split(".")[1]} file`)
 	fs.rm(`./storage/temp/${ent.name}`, () => {});
 })
