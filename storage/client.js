@@ -17,6 +17,7 @@ function download(format){
         setStatus("URL is blank")
         return
     }
+    setStatus("Downloading...")
     //lets just say otherwise we can send it through
     console.log(window.location);
     let serverURL = `${window.location.origin}/getUrl`
