@@ -26,12 +26,11 @@ function download(format){
             url: url,
             format: format
         }
-    });
-    resp.then((r) => {
+    }).then((r) => {
         //got the response
         r.json().then(body=>{
             if(r.status !== 200){
-                setStatus(body.message || "Failed to get video")
+                setStatus(body.message || "Failed to get video, status " + r.status)
                 return
             }    
             //get the body
@@ -40,5 +39,5 @@ function download(format){
             pom.setAttribute('download', body.title);
             pom.click();
         })
-    })
+    }).catch((r) => setStatus(`Failed to connect to server: ${r}`));
 }
