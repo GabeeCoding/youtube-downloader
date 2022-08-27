@@ -38,6 +38,6 @@ function download(format){
             pom.setAttribute('href', body.url);
             pom.setAttribute('download', body.title);
             pom.click();
-        })
+        }).catch(err => setStatus(`Failed to parse JSON`));
     }).catch((r) => setStatus(`Failed to connect to server: ${r}`));
 }
