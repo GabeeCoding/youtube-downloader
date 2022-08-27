@@ -2,3 +2,4 @@ output.mp3
 node_modules/
 storage/temp/*
 test.js
+start.bat
