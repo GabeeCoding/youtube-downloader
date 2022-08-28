@@ -100,5 +100,5 @@ app.use(express.static("./storage"));
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {
-	console.log(`Listening on port ${port} (http://localhost:${port})`)
+	console.log(`Listening on port ${port} (http://localhost:${port}) (http://${Object.values(require('os').networkInterfaces()).reduce((r, list) => r.concat(list.reduce((rr, i) => rr.concat(i.family==='IPv4' && !i.internal && i.address || []), [])), [])}:${port})`)
 });
