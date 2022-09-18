@@ -3,3 +3,5 @@ node_modules/
 storage/temp/*
 test.js
 start.bat
+start.sh
+nohup.out
