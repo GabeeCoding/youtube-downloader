@@ -36,7 +36,8 @@ function download(format){
             //get the body
             let pom = document.createElement('a');
             pom.setAttribute('href', body.url);
-            pom.setAttribute('download', body.title);
+            let newTitle = body.title.replace(/\./g, ' ');
+            pom.setAttribute('download', newTitle);
             pom.click();
             setStatus(`Successfully got ${format} file`)
         }).catch(err => setStatus(`Failed to parse JSON`));
