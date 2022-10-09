@@ -4,7 +4,7 @@ const express = require("express");
 const { randomUUID } = require("crypto");
 const cp = require("child_process")
 const ffmpeg = require("ffmpeg-static")
-const path = require("path")
+require("dotenv").config()
 
 const app = express();
 

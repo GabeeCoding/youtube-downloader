@@ -5,3 +5,6 @@ test.js
 start.bat
 start.sh
 nohup.out
+
+# env
+.env
