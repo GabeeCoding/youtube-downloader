@@ -20,12 +20,13 @@ function download(format){
     setStatus("Downloading...")
     //lets just say otherwise we can send it through
     console.log(window.location);
-    let serverURL = `${window.location.origin}/getUrl`
+    let serverURL = `${window.location.origin}${window.location.pathname}getUrl`
     let resp = fetch(serverURL, {
         headers: {
             url: url,
             format: format
-        }
+        },
+		credentials: "include",
     }).then((r) => {
         //got the response
         r.json().then(body=>{
