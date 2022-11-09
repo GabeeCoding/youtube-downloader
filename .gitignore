@@ -5,6 +5,8 @@ test.js
 start.bat
 start.sh
 nohup.out
+.DS_Store
+@eaDir
 
 # env
 .env
