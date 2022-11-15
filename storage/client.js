@@ -6,6 +6,10 @@ setStatus("Click the buttons to download video/audio from url")
 let URLBox = document.getElementById("urlbox")
 let downloadbox = document.getElementById("link")
 
+let URL = `${window.location.origin}${window.location.pathname}`
+if(!window.location.pathname.endsWith("/")){
+	URL = URL + "/"
+}
 function download(format){
     //send a request to the server
     //server recieves it
@@ -20,7 +24,7 @@ function download(format){
     setStatus("Downloading...")
     //lets just say otherwise we can send it through
     console.log(window.location);
-    let serverURL = `${window.location.origin}${window.location.pathname}getUrl`
+    let serverURL = `${URL}getUrl`
     let resp = fetch(serverURL, {
         headers: {
             url: url,
