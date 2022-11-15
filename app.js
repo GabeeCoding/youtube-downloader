@@ -39,10 +39,17 @@ app.get("/getUrl", async (req, resp) => {
 	let url = headers.url
 	let format = headers.format
 	if(AreHeadersValid([url, format]) === false){
-		resp.status(400).send("Missing headers");
+		resp.status(400).json({message: "Missing headers"});
 		return
 	}
-	let title = (await ytdl.getInfo(url)).videoDetails.title
+	let title 
+	try {
+		title = (await ytdl.getInfo(url)).videoDetails.title
+	} catch (e) {
+		resp.status(400).json({message: "Invalid video url, failed"}).end()
+		return
+	}
+	console.log("Continuing...")
 	let fileName = randomUUID()
 
 	if(format === "mp4"){
