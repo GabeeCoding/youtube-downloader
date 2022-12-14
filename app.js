@@ -8,6 +8,16 @@ require("dotenv").config()
 
 const app = express();
 
+app.use((req, resp, next) => {
+	resp.header("Access-Control-Allow-Origin", "*")
+	resp.header("Access-Control-Allow-Headers", "*")
+	if (req.method === 'OPTIONS') {
+	    return resp.sendStatus(200);
+	} else {
+		return next();
+	}
+})
+
 app.get("/", (req, resp) => {
 	//send html file
 	resp.sendFile(__dirname + "/storage/index.html")
@@ -49,7 +59,6 @@ app.get("/getUrl", async (req, resp) => {
 		resp.status(400).json({message: "Invalid video url, failed"}).end()
 		return
 	}
-	console.log("Continuing...")
 	let fileName = randomUUID()
 
 	if(format === "mp4"){
