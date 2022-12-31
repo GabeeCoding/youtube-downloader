@@ -63,7 +63,7 @@ app.get("/getUrl", async (req, resp) => {
 
 	if(format === "mp4"){
 		//just download it nothing special
-		let stream = getStream(url, {filter: "video"});
+		let stream = getStream(url, {quality: 18});
 		if(stream === undefined){
 			//stream failed
 			resp.status(500).send(JSON.stringify({message: "Failed to download video"}));
